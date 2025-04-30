@@ -308,7 +308,7 @@ function onSpeechRecognized(result){
 
   /**
    * 抓取 DOM 並設定事件監聽
-   */
+  
   initButton.addEventListener("click", handleInit);
   getModelListButton.addEventListener("click", handleGetModelList);
   startRecordBtn.addEventListener("click", handleStart);
@@ -316,7 +316,7 @@ function onSpeechRecognized(result){
   autoScrollButton.addEventListener("click", handleAutoScroll);
   clearContentButton.addEventListener("click", handleClear);
   recordFileCheckbox.addEventListener("change", handleChangeRecordFile);
-
+  */
   /**
    * 使用代理器處理狀態
    */
@@ -666,14 +666,14 @@ function onSpeechRecognized(result){
 
   /**
    * 確認瀏覽器是否支援 screen wake lock
-   */
+   
   function isScreenLockSupported() {
     return "wakeLock" in navigator;
   }
-
+  */
   /**
    * 設定瀏覽器 screen lock
-   */
+
   let screenLock;
   async function setScreenLock() {
     if (isScreenLockSupported()) {
@@ -685,10 +685,10 @@ function onSpeechRecognized(result){
       }
     }
   }
-
+  */
   /**
    * 釋放瀏覽器 screen lock
-   */
+
   async function releaseScreenLock() {
     if (typeof screenLock !== "undefined" && screenLock !== null) {
       await screenLock.release();
@@ -696,7 +696,7 @@ function onSpeechRecognized(result){
       screenLock = null;
     }
   }
-
+   */
   /**
    * 變更 isRecord 狀態
    */
