@@ -505,7 +505,7 @@ function onSpeechRecognized(result){
    */
   async function handleStop() {
     await Recorder.stop();
-    await releaseScreenLock(); // 釋放畫面
+    //await releaseScreenLock(); // 釋放畫面
     handleVolumeCellColor(0);
     proxy.isRecording = false;
   }
