@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded',()=>{
             await handleInit();
             console.log("初始化完成。");
 
-            console.log("開始取得模型...");
+            //console.log("開始取得模型...");
             // *** 假設的函數名稱，你需要替換成實際的 ***
-            await handleGetModelList();
-            console.log("模型取得完成。");
+            //await handleGetModelList();
+            //console.log("模型取得完成。");
 
             isSttReady = true;
             recordButton.disabled = false;
@@ -436,12 +436,12 @@ function onSpeechRecognized(result){
 
   /**
    * 若需修改 ASR model，可抓取 ASR 所提供的 Model 訓練資料 (optional)
-   */
+  
   async function handleGetModelList() {
     if (!Recorder) return;
     try {
       const { data } = await Recorder.getModelList();
-
+    
       if (data) {
         //modelSelect.innerText = "";
         data.forEach((item) => {
@@ -458,7 +458,7 @@ function onSpeechRecognized(result){
       console.log(error);
     }
   }
-
+ */
   /**
    * 開始轉換聲音資料
    *
