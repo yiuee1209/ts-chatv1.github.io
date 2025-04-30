@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在被情勒之前認命地寫個前端</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="banner top-banner">
+        <img scr="台新的橫幅（置頂）.png" alt="台新橫幅（頂）">
+        <div class="settings" onclick="toggleMenu()">⚙️</div>
+        <div id="menu" class="menu">
+            <a href="https://www.taishinlife.com.tw/portal/contactus" target="_blank">聯絡我們</a>
+        </div>
+    </header>
+
+    <!--聊天室區塊-->
+    <main>
+        <div class="chat-container" id = "chat"></div>
+
+        <!--輸入區-->
+        <div class="input-area">
+            <input type="text" id="textInput" placeholder="請輸入訊息...">
+            <button onclick="sendMessage()">發送</button>
+            <button id="record-button">🎤</button>
+            <div id="js-content" style="display:none;"></div>
+            <div id="innerText" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="banner bottom-banner"></footer>
+
+    <script src="script.js"></script>
+    <script src="ASRRecorder.js"></script>
+    <script src="Parser.js"></script>
+    
+</body>
+</html>
