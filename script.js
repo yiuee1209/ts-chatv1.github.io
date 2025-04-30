@@ -371,7 +371,7 @@ function onSpeechRecognized(result){
     }
 
     const audioDevices = await navigator.mediaDevices.enumerateDevices();
-
+/*
     audioDevices.forEach((device) => {
       if (device.kind === "audioinput") {
         const option = document.createElement("option");
@@ -380,6 +380,7 @@ function onSpeechRecognized(result){
         devices.appendChild(option);
       }
     });
+*/
 
     // 釋放掉 stream 因為只是一次性需獲取麥克風權限
     tempStream.getTracks().forEach((track) => track.stop());
