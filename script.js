@@ -287,7 +287,7 @@ function onSpeechRecognized(result){
   const websocketStatus = document.querySelector("#js-websocket-status");
   const content = document.querySelector("#js-content");
   //const modelSelect = document.querySelector("#js-model-select");
-  const modelSelect = 1
+  //const modelSelect = 1
   const clearContentButton = document.querySelector(
     "#js-clear-content-button"
   );
@@ -477,7 +477,7 @@ function onSpeechRecognized(result){
     //const deviceIndex = devices.options.selectedIndex;
     //const deviceValue = devices.options[deviceIndex].value;
     const parserUrlValue = parserUrl.value;
-    const model = null;
+    const model = "basic-taigi.2025.02.06";
     const deviceValue = null;
 
     //websocketStatus.innerText = `${connStatusLabel} Connecting ...`;
