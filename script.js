@@ -123,11 +123,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+
 async function initSession() {
     try {
         const requestOptions = {
             method: "POST",
-            redirect: "follow"
+            redirect: "follow",
+            mode: "no-cors" // 添加這一行來設置 no-cors 模式
         };
 
         const response = await fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions);
