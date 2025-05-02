@@ -358,7 +358,7 @@ class ASRRecorder {
     await this.login();
     await this.getWebsocketAccessInfo();
 
-    this.setupParserConfig(parserUrl);
+    //this.setupParserConfig(parserUrl);
     await this.parser.connect();
 
     await this.connectWebsocket();
@@ -371,7 +371,7 @@ class ASRRecorder {
    * @param {function(): void} cb
    */
   setupParserConfig(url) {
-    if (url.length !== 0 || url != null) {
+    if (url.length !== 0) {
       this.parser.setUrl = url;
       this.parser.setCallback = this.cb;
       this.parser.setToken = this.token;
