@@ -136,11 +136,11 @@ async function initSession() {
 
         console.log(response.text());
         return response.text()
+        }
 }
 
 
-
-document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('DOMContentLoaded', async () => {
     sessionId = await initSession();
     if (sessionId) {
         console.log("Session 已初始化，sessionId:", sessionId);
