@@ -62,14 +62,15 @@ document.addEventListener('DOMContentLoaded',()=>{
             // --- 停止錄音 ---
             try {
                 console.log("嘗試停止錄音...");
-                // *** 假設的函數名稱，你需要替換成實際的 ***
+
+                await Recorder.websocket.send("EOS");
+                console.log("已發送 EOS 信號。");
+                
                 await handleStop();
                 isRecording = false;
                 recordButton.textContent = "🎤 開始錄音";
                 console.log("錄音已停止。");
                 // 等待結果回傳 (下一步處理)
-                await Recorder.websocket.send("EOS");
-                console.log("已發送 EOS 信號。");
 
 
     
