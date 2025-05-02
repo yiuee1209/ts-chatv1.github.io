@@ -172,7 +172,7 @@ function sendMessage(){
 
     fetch('https://retibot-247393254326.us-central1.run.app/chat',{
         method:'POST',
-        headers:{'Content=Type':'application/json'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({session_id: sessionId, message: text})
     })
     .then(res=>res.json())
@@ -181,7 +181,7 @@ function sendMessage(){
         appendMessage('bot',data.reply);
     })
     .catch(error=>{
-        removeLoadong();
+        removeLoading();
         console.error('Error',error);
         appendMessage('bot','很抱歉，大宇宙意識斷線中。')
     });
