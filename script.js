@@ -1,6 +1,6 @@
 let isSttReady = false;
 let isRecording = false;
-let sessionID = null;
+let sessionId = null;
 
 document.addEventListener('DOMContentLoaded',()=>{
     const recordButton = document.getElementById('record-button');
