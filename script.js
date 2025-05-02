@@ -1,11 +1,16 @@
 let isSttReady = false;
 let isRecording = false;
+let sessionID = null;
 
 document.addEventListener('DOMContentLoaded',()=>{
     const recordButton = document.getElementById('record-button');
     // 禁用按鈕直到STT準備好
     recordButton.disabled = true;
-    recordButton.textContent = "STT 初始化中...";
+    recordButton.textContent = "初始化中...";
+
+    sessionId = await initSession();
+
+    
     async function setupSTT() {
         try {
             console.log("開始 STT 初始化...");
