@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
             const bubble = document.createElement('div');
             bubble.className = ' bubble';
-            bubble.innerHTML = marked(text); 
+            bubble.innerHTML = marked.parse(text); 
             //bubble.textContent = text;
             message.appendChild(bubble);
         
