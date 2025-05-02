@@ -252,6 +252,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+
+
+// 新增監聽 Enter 鍵事件
+input.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+
+
+
+
   // 版本資訊
   const VERSION = "1.0.5";
   console.log(`Demo index.html version: ${VERSION}`);
