@@ -221,7 +221,7 @@ function removeLoadong(){
   //const username = document.querySelector("#username");
   //const password = document.querySelector("#password");
   //const devices = document.querySelector("#devices");
-  const devices = ""
+  const devices = "default"
   //const url = document.querySelector("#url");
   //const parserUrl = document.querySelector("#parser");
   //const initButton = document.querySelector("#js-init-button");
