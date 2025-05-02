@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(res=>res.json())
         .then(data=>{
             removeLoading();
-            appendMessage('bot',data.reply);
+            appendMessage('bot',data.response.reply);
         })
         .catch(error=>{
             removeLoading();
