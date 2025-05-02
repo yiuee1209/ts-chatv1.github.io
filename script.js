@@ -139,7 +139,7 @@ async function initSession() {
         console.log(result);
 
         // 顯示回覆在 bot 對話裡面
-        appendMessage('bot', result.message);
+        appendMessage('bot', result.response);
 
         // 獲取 session_id 的值
         const sessionId = result.session_id; 
@@ -251,17 +251,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             loadingMessage=null;
         }
     }
-
-
-
-// 新增監聽 Enter 鍵事件
-document.getElementByID('textInput').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        sendMessage();
-    }
-});
-
 
 
 
