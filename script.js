@@ -271,7 +271,6 @@ function onSpeechRecognized(result){
     const url = "https://asrapi01.bronci.com.tw";
     const recordFileCheckbox = false;
     const parserUrl = "";
-    console.log("A",parserUrl.lenth)
   //const username = document.querySelector("#username");
   //const password = document.querySelector("#password");
   //const devices = document.querySelector("#devices");
@@ -497,7 +496,7 @@ function onSpeechRecognized(result){
     } catch (error) {
       console.log(error);
       //websocketStatus.innerText = `${connStatusLabel} ${error}`;
-      handleStop();
+      //handleStop();
     }
   }
 
