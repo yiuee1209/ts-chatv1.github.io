@@ -202,59 +202,6 @@ function removeLoadong(){
     }
 }
 
-/*let recoder = null;
-function startRecoding(){
-    if(!recoder){
-        recoder = new ASRRecorder("ASR0421_70789634","Api042170789634","https://asrapi01.bronci.com.tw",true)
-    }
-    recoder.start()
-    
-
-    setTimeout(()=>{
-        recoder.stop().then(result=>{
-            try{
-                const data = JSON.parse(result);
-                onSpeechRecognized(data);
-            } catch(error) {
-            console.error('JSON解析錯誤',error);
-            appendMessage('bot','JSON解析錯誤');
-        }
-    }).catch(error=>{
-        console.error('錄音出錯',error);
-        appendMessage('bot','錄音出錯'); 
-    });
-    },12000);
-}
-
-function onSpeechRecognized(result){
-    const recongizedText = result.text;
-    if (!recongizedText){
-        appendMessage('bot','辨識不到內容，請再次一次。');
-        return;
-    }
-    appendMessage('user',recongizedText);
-    appendLoading();
-
-    fetch('/api',{
-        method:'POST',
-        headers:{'Content=Type':'application/json'},
-        body:JSON.stringify({message:text})
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        removeLoadong();
-        appendMessage('bot',data.reply);
-    })
-    .catch(error=>{
-        removeLoadong();
-        console.error('Error',error);
-        appendMessage('bot','很抱歉，大宇宙意識斷線中。')
-    });
-
-}
-*/
-
-
 
   // 版本資訊
   const VERSION = "1.0.5";
@@ -274,7 +221,7 @@ function onSpeechRecognized(result){
   //const username = document.querySelector("#username");
   //const password = document.querySelector("#password");
   //const devices = document.querySelector("#devices");
-  const devices = 1
+  const devices = ""
   //const url = document.querySelector("#url");
   //const parserUrl = document.querySelector("#parser");
   //const initButton = document.querySelector("#js-init-button");
@@ -287,7 +234,6 @@ function onSpeechRecognized(result){
   const websocketStatus = document.querySelector("#js-websocket-status");
   const content = document.querySelector("#js-content");
   //const modelSelect = document.querySelector("#js-model-select");
-  //const modelSelect = 1
   const clearContentButton = document.querySelector(
     "#js-clear-content-button"
   );
@@ -372,7 +318,7 @@ function onSpeechRecognized(result){
     }
 
     const audioDevices = await navigator.mediaDevices.enumerateDevices();
-/*
+      
     audioDevices.forEach((device) => {
       if (device.kind === "audioinput") {
         const option = document.createElement("option");
@@ -381,7 +327,6 @@ function onSpeechRecognized(result){
         devices.appendChild(option);
       }
     });
-*/
 
     // 釋放掉 stream 因為只是一次性需獲取麥克風權限
     tempStream.getTracks().forEach((track) => track.stop());
