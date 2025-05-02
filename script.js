@@ -125,23 +125,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 async function initSession() {
     try {
-        const response = await fetch('https://retibot-247393254326.us-central1.run.app/init', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await response.json();
-        return data.session_id;
-    } catch (error) {
-        console.error('初始化會話失敗:', error);
-        return null;
-    }
+        const requestOptions = {
+          method: "POST",
+          redirect: "follow"
+        };
+        
+        fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions)
+          .then((response) => response.text())
+          .then((result) => console.log(result))
+          .catch((error) => console.error(error));
+
+        console.log(response.text());
+        return response.text()
 }
 
 
-
-let sessionId = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     sessionId = await initSession();
@@ -151,10 +149,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Session 初始化失敗");
     }
 });
-
-
-
-
 
 
 
