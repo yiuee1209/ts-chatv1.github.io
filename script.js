@@ -186,10 +186,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({session_id: sessionId_A, message: text})
         })
-        .then(res=>res.json())
+        .then((response) => response.text())
         .then(data=>{
+            console.log(data);
             removeLoading();
-            appendMessage('bot',data.response.reply);
+            appendMessage('bot',data.reply);
         })
         .catch(error=>{
             removeLoading();
