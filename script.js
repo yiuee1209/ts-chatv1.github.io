@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     
     const sttOutputElement = document.getElementById('js-content');
     const chatInputElement = document.getElementById('textInput');
-
+    console.log(sttOutputElement)
     if (sttOutputElement && chatInputElement) {
         const observer = new MutationObserver((mutationsList, observer) => {
             // 監聽到變化
