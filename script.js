@@ -124,14 +124,15 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+
 async function initSession() {
     try {
         const requestOptions = {
             method: "POST",
-            redirect: "follow",
+            redirect: "follow"
         };
 
-        const response = await fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions);
+        const response = await fetch("https://cors-anywhere.herokuapp.com/https://retibot-247393254326.us-central1.run.app/init", requestOptions);
         const result = await response.text();
         console.log(result);
         return result;
@@ -141,8 +142,7 @@ async function initSession() {
     }
 }
 
-
-    document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     sessionId = await initSession();
     if (sessionId) {
         console.log("Session 已初始化，sessionId:", sessionId);
@@ -150,6 +150,7 @@ async function initSession() {
         console.error("Session 初始化失敗");
     }
 });
+
 
 
 
