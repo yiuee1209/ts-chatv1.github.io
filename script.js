@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
             const bubble = document.createElement('div');
             bubble.className = ' bubble';
+            bubble.innerHTML = marked(markdown); 
             bubble.textContent = text;
             message.appendChild(bubble);
         
