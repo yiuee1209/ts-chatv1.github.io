@@ -179,6 +179,9 @@ class ASRRecorder {
    * @param {string} data
    * @returns {{ code: number, message: string, status: string, result: { startTime: number, endTime: number, segment: number, final: number, transcript: string }[]}}
    */
+ 
+  console.log(data) //
+  
   parse(data) {
     return JSON.parse(data);
   }
