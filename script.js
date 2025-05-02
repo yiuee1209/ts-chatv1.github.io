@@ -151,11 +151,12 @@ async function initSession() {
     }
 }
 
-let sessionId;
+let sessionId_A;
 document.addEventListener('DOMContentLoaded', async () => {
     const sessionId = await initSession();
     if (sessionId) {
         console.log("Session 已初始化，sessionId:", sessionId);
+        sessionId_A = sessionId;
     } else {
         console.error("Session 初始化失敗");
     }
@@ -183,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         fetch('https://retibot-247393254326.us-central1.run.app/chat',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({session_id: sessionId, message: text})
+            body:JSON.stringify({session_id: sessionId_A, message: text})
         })
         .then(res=>res.json())
         .then(data=>{
