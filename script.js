@@ -255,8 +255,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 // 新增監聽 Enter 鍵事件
-input.addEventListener('keypress', function(event) {
+document.getElementByID('textInput').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
+        event.preventDefault();
         sendMessage();
     }
 });
