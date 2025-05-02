@@ -324,7 +324,7 @@ function removeLoadong(){
         const option = document.createElement("option");
         option.value = device.deviceId;
         option.text = device.label;
-        devices.appendChild(option);
+        //devices.appendChild(option);
       }
     });
 
