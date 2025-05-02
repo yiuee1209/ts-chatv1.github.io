@@ -613,15 +613,17 @@ function onSpeechRecognized(result){
       const { segment, transcript, final } = result[0];
 
       const dom = document.querySelector(`[data-segment="${segment}"]`);
-
+      console.log("1",dom) //
       if (!dom) {
         const d = document.createElement("p");
         d.dataset.segment = segment;
         d.innerText = transcript;
-
+    
         content.appendChild(d);
+        console.log("2",content) //
       } else {
         dom.innerText = transcript;
+        console.log("3",dom) //
       }
 
       if (autoScroll) {
@@ -643,6 +645,7 @@ function onSpeechRecognized(result){
     dom.innerText = JSON.stringify(data);
 
     parserResult.appendChild(dom);
+    console.log("4",parserResult)
   }
 
   /**
