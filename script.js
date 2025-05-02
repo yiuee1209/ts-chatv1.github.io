@@ -496,7 +496,7 @@ function onSpeechRecognized(result){
     } catch (error) {
       console.log(error);
       //websocketStatus.innerText = `${connStatusLabel} ${error}`;
-      //handleStop();
+      handleStop();
     }
   }
 
