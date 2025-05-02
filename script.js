@@ -159,98 +159,97 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.error("Session 初始化失敗");
     }
-});
 
 
 
 
 
-function toggleMenu(){
-    const menu = document.getElementById('menu');
-    menu.style.display = menu.style.display === 'block' ? 'none':'block';
-}
-
-const chat = document.getElementById('chat');
-function sendMessage(){
-    const input = document.getElementById('textInput');
-    const text = input.value.trim();
-    if (text === '') return;
-
-    appendMessage('user',text);
-    input.value='';
-
-    appendLoading();
-
-    fetch('https://retibot-247393254326.us-central1.run.app/chat',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({session_id: sessionId, message: text})
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        removeLoading();
-        appendMessage('bot',data.reply);
-    })
-    .catch(error=>{
-        removeLoading();
-        console.error('Error',error);
-        appendMessage('bot','很抱歉，大宇宙意識斷線中。')
-    });
-}
-function appendMessage(sender,text){
-    const message=document.createElement('div');
-    message.className=`message ${sender}`;
-    if (sender === 'bot'){
+    function toggleMenu(){
+        const menu = document.getElementById('menu');
+        menu.style.display = menu.style.display === 'block' ? 'none':'block';
+    }
+    
+    const chat = document.getElementById('chat');
+    function sendMessage(){
+        const input = document.getElementById('textInput');
+        const text = input.value.trim();
+        if (text === '') return;
+    
+        appendMessage('user',text);
+        input.value='';
+    
+        appendLoading();
+    
+        fetch('https://retibot-247393254326.us-central1.run.app/chat',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({session_id: sessionId, message: text})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            removeLoading();
+            appendMessage('bot',data.reply);
+        })
+        .catch(error=>{
+            removeLoading();
+            console.error('Error',error);
+            appendMessage('bot','很抱歉，大宇宙意識斷線中。')
+        });
+    }
+    function appendMessage(sender,text){
+        const message=document.createElement('div');
+        message.className=`message ${sender}`;
+        if (sender === 'bot'){
+            const avatar = document.createElement('div');
+            avatar.className = ' avatar';
+            message.appendChild(avatar);
+        
+            const bubble = document.createElement('div');
+            bubble.className = ' bubble';
+            bubble.textContent = text;
+            message.appendChild(bubble);
+        
+        } else if (sender === 'user'){
+            const bubble =document.createElement('div');
+            bubble.className=' bubble';
+            bubble.textContent = text;
+            message.appendChild(bubble);
+        }
+    
+        chat.appendChild(message);
+        chat.scrollTop=chat.scrollHeight;
+    }
+    
+    let loadingMessage;
+    function appendLoading(){
+        loadingMessage = document.createElement('div');
+        loadingMessage.className = 'message bot'
+    
         const avatar = document.createElement('div');
-        avatar.className = ' avatar';
-        message.appendChild(avatar);
+        avatar.className='avatar';
+        loadingMessage.appendChild(avatar);
     
         const bubble = document.createElement('div');
-        bubble.className = ' bubble';
-        bubble.textContent = text;
-        message.appendChild(bubble);
+        bubble.className = 'bubble';
     
-    } else if (sender === 'user'){
-        const bubble =document.createElement('div');
-        bubble.className=' bubble';
-        bubble.textContent = text;
-        message.appendChild(bubble);
-    }
-
-    chat.appendChild(message);
-    chat.scrollTop=chat.scrollHeight;
-}
-
-let loadingMessage;
-function appendLoading(){
-    loadingMessage = document.createElement('div');
-    loadingMessage.className = 'message bot'
-
-    const avatar = document.createElement('div');
-    avatar.className='avatar';
-    loadingMessage.appendChild(avatar);
-
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-
-    const loading = document.createElement('div');
-    loading.className = 'loading';
-    loading.innerHTML = '<span></span><span></span><span></span>';
+        const loading = document.createElement('div');
+        loading.className = 'loading';
+        loading.innerHTML = '<span></span><span></span><span></span>';
+        
+        bubble.appendChild(loading);
+        loadingMessage.appendChild(bubble);
     
-    bubble.appendChild(loading);
-    loadingMessage.appendChild(bubble);
-
-    chat.appendChild(loadingMessage);
-    chat.scrollTop = chat.scrollHeight;
-}
-
-function removeLoading(){
-    if (loadingMessage){
-        chat.removeChild(loadingMessage);
-        loadingMessage=null;
+        chat.appendChild(loadingMessage);
+        chat.scrollTop = chat.scrollHeight;
     }
-}
-
+    
+    function removeLoading(){
+        if (loadingMessage){
+            chat.removeChild(loadingMessage);
+            loadingMessage=null;
+        }
+    }
+});
 
   // 版本資訊
   const VERSION = "1.0.5";
