@@ -617,11 +617,11 @@ function onSpeechRecognized(result){
       if (!dom) {
         const d = document.createElement("p");
         d.dataset.segment = segment;
-        //d.innerText = transcript;
+        d.innerText = transcript;
 
         content.appendChild(d);
       } else {
-        //dom.innerText = transcript;
+        dom.innerText = transcript;
       }
 
       if (autoScroll) {
@@ -640,7 +640,7 @@ function onSpeechRecognized(result){
    */
   function handleRenderParserResult(data) {
     const dom = document.createElement("p");
-    //dom.innerText = JSON.stringify(data);
+    dom.innerText = JSON.stringify(data);
 
     parserResult.appendChild(dom);
   }
