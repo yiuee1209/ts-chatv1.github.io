@@ -123,6 +123,38 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+async function initSession() {
+    try {
+        const response = await fetch('https://retibot-247393254326.us-central1.run.app/init', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        return data.session_id;
+    } catch (error) {
+        console.error('初始化會話失敗:', error);
+        return null;
+    }
+}
+
+
+
+let sessionId = null;
+
+document.addEventListener('DOMContentLoaded', async () => {
+    sessionId = await initSession();
+    if (sessionId) {
+        console.log("Session 已初始化，sessionId:", sessionId);
+    } else {
+        console.error("Session 初始化失敗");
+    }
+});
+
+
+
+
 
 
 
