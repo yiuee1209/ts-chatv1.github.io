@@ -121,6 +121,7 @@ class Parser {
    * parse Parser 回傳的資料
    */
   parse(data) {
+    console.log("Parser",data);
     return JSON.parse(data);
   }
 }
