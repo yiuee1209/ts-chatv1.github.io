@@ -170,14 +170,14 @@ function sendMessage(){
 
     appendLoading();
 
-    fetch('https://retibot-247393254326.us-central1.run.app/chat',{
+    fetch('https://cors-anywhere.herokuapp.com/https://retibot-247393254326.us-central1.run.app/init',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({session_id: sessionId, message: text})
     })
     .then(res=>res.json())
     .then(data=>{
-        removeLoadong();
+        removeLoading();
         appendMessage('bot',data.reply);
     })
     .catch(error=>{
@@ -233,7 +233,7 @@ function appendLoading(){
     chat.scrollTop = chat.scrollHeight;
 }
 
-function removeLoadong(){
+function removeLoading(){
     if (loadingMessage){
         chat.removeChild(loadingMessage);
         loadingMessage=null;
