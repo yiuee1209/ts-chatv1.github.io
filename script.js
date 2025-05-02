@@ -120,6 +120,22 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 
+async function initSession() {
+    try {
+        const response = await fetch('https://retibot-247393254326.us-central1.run.app/init', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        return data.session_id;
+    } catch (error) {
+        console.error('初始化會話失敗:', error);
+        return null;
+    }
+}
+
 
 
 function toggleMenu(){
@@ -138,10 +154,10 @@ function sendMessage(){
 
     appendLoading();
 
-    fetch('/api',{
+    fetch('https://retibot-247393254326.us-central1.run.app/chat',{
         method:'POST',
         headers:{'Content=Type':'application/json'},
-        body:JSON.stringify({message:text})
+        body:JSON.stringify({session_id: sessionId, message: text})
     })
     .then(res=>res.json())
     .then(data=>{
@@ -149,7 +165,7 @@ function sendMessage(){
         appendMessage('bot',data.reply);
     })
     .catch(error=>{
-        /*removeLoadong();*/
+        removeLoadong();
         console.error('Error',error);
         appendMessage('bot','很抱歉，大宇宙意識斷線中。')
     });
