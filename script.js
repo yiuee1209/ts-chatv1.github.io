@@ -122,21 +122,22 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+
 async function initSession() {
     try {
-        const requestOptions = {
-          method: "POST",
-          redirect: "follow"
-        };
-        
-        fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions)
-          .then((response) => response.text())
-          .then((result) => console.log(result))
-          .catch((error) => console.error(error));
+        const requestOptions = {
+            method: "POST",
+            redirect: "follow"
+        };
 
-        console.log(response.text());
-        return response.text()
-        }
+        const response = await fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions);
+        const result = await response.text();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error('初始化會話失敗:', error);
+        return null;
+    }
 }
 
 
