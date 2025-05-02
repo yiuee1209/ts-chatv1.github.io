@@ -68,6 +68,10 @@ document.addEventListener('DOMContentLoaded',()=>{
                 recordButton.textContent = "🎤 開始錄音";
                 console.log("錄音已停止。");
                 // 等待結果回傳 (下一步處理)
+                
+                websocket.send("EOS");
+                console.log("已發送 EOS 信號。");
+
     
             } catch (error) {
                 console.error("停止錄音失敗:", error);
