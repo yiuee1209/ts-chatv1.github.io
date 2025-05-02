@@ -270,12 +270,13 @@ function onSpeechRecognized(result){
     const password = "Api042170789634";
     const url = "https://asrapi01.bronci.com.tw";
     const recordFileCheckbox = false;
+    const parserUrl = "";
   //const username = document.querySelector("#username");
   //const password = document.querySelector("#password");
   //const devices = document.querySelector("#devices");
   const devices = 1
   //const url = document.querySelector("#url");
-  const parserUrl = document.querySelector("#parser");
+  //const parserUrl = document.querySelector("#parser");
   //const initButton = document.querySelector("#js-init-button");
   //const message = document.querySelector("#js-error-message");
   const getModelListButton = document.querySelector(
