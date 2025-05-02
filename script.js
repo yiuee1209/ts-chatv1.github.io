@@ -135,14 +135,14 @@ async function initSession() {
         };
 
         const response = await fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions);
-        const result = await response.json(); // 假設回覆是 JSON 格式
+        const result = await response.json();
         console.log(result);
 
         // 顯示回覆在 bot 對話裡面
-        appendMessage('bot', result.message); // 假設回覆中有 'message' 欄位
+        appendMessage('bot', result.message);
 
         // 獲取 session_id 的值
-        const sessionId = result.session_id; // 假設回覆中有 'session_id' 欄位
+        const sessionId = result.session_id; 
         return sessionId;
     } catch (error) {
         console.error('初始化會話失敗:', error);
@@ -186,12 +186,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({session_id: sessionId_A, message: text})
         })
-        .then((response) => response.text())
-        .then(data=>{
-            console.log(data);
-            removeLoading();
-            appendMessage('bot',data.reply);
-        })
+        .then(res => res.json())
+        .then(data => {
+            removeLoading();
+            appendMessage('bot', data.response); // 修改這行以顯示回覆
+        })
         .catch(error=>{
             removeLoading();
             console.error('Error',error);
