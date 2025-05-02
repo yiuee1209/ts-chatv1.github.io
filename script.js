@@ -476,20 +476,19 @@ function onSpeechRecognized(result){
 
     //const deviceIndex = devices.options.selectedIndex;
     //const deviceValue = devices.options[deviceIndex].value;
-    //const parserUrlValue = parserUrl.value;
+    const parserUrlValue = parserUrl.value;
     const model = null;
     const deviceValue = null;
-    const parserUrlValue = null;
 
     //websocketStatus.innerText = `${connStatusLabel} Connecting ...`;
 
     try {
       await Recorder.start(model, deviceValue, parserUrlValue, (data) => {
-        if (data.type === "Parser") {
+        /*if (data.type === "Parser") {
           handleRenderParserResult(data);
           return;
         }
-
+        */
         handleRender(data);
       });
       //await setScreenLock(); // 鎖定畫面
