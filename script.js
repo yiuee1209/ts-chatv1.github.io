@@ -132,7 +132,7 @@ async function initSession() {
             redirect: "follow"
         };
 
-        const response = await fetch("https://cors-anywhere.herokuapp.com/https://retibot-247393254326.us-central1.run.app/init", requestOptions);
+        const response = await fetch("https://retibot-247393254326.us-central1.run.app/init", requestOptions);
         const result = await response.text();
         console.log(result);
         return result;
@@ -170,7 +170,7 @@ function sendMessage(){
 
     appendLoading();
 
-    fetch('https://cors-anywhere.herokuapp.com/https://retibot-247393254326.us-central1.run.app/init',{
+    fetch('https://retibot-247393254326.us-central1.run.app/chat',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({session_id: sessionId, message: text})
