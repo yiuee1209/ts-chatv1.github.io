@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         input.value='';
     
         appendLoading();
-    
+        console.log(sessionId,text)
         fetch('https://retibot-247393254326.us-central1.run.app/chat',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
