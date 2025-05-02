@@ -319,33 +319,33 @@ function onSpeechRecognized(result){
   */
   /**
    * 使用代理器處理狀態
-   */
+  */
   const handler = {
     set: function (obj, props, value) {
       obj[props] = value;
 
       if (obj.status) {
-        getModelListButton.removeAttribute("disabled");
-        startRecordBtn.removeAttribute("disabled");
-        stopRecordBtn.removeAttribute("disabled");
+        //getModelListButton.removeAttribute("disabled");
+        //startRecordBtn.removeAttribute("disabled");
+        //stopRecordBtn.removeAttribute("disabled");
       } else {
-        getModelListButton.setAttribute("disabled", true);
-        startRecordBtn.setAttribute("disabled", true);
-        stopRecordBtn.setAttribute("disabled", true);
+        //getModelListButton.setAttribute("disabled", true);
+        //startRecordBtn.setAttribute("disabled", true);
+        //stopRecordBtn.setAttribute("disabled", true);
         //modelSelect.innerText = "";
       }
 
       if (obj.status && obj.isRecording) {
-        stopRecordBtn.removeAttribute("disabled");
-        startRecordBtn.setAttribute("disabled", true);
+        //stopRecordBtn.removeAttribute("disabled");
+        //startRecordBtn.setAttribute("disabled", true);
       } else if (obj.status && !obj.isRecording) {
-        startRecordBtn.removeAttribute("disabled");
-        stopRecordBtn.setAttribute("disabled", true);
+        //startRecordBtn.removeAttribute("disabled");
+        //stopRecordBtn.setAttribute("disabled", true);
       }
     },
   };
   const proxy = new Proxy({ status: false, isRecording: false }, handler);
-
+  
   /**
    * 允許麥克風權限
    *
@@ -491,7 +491,7 @@ function onSpeechRecognized(result){
 
         handleRender(data);
       });
-      await setScreenLock(); // 鎖定畫面
+      //await setScreenLock(); // 鎖定畫面
       proxy.isRecording = true;
     } catch (error) {
       console.log(error);
