@@ -151,7 +151,7 @@ async function initSession() {
     }
 }
 
-
+let sessionId = null;
 document.addEventListener('DOMContentLoaded', async () => {
     const sessionId = await initSession();
     if (sessionId) {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.error("Session 初始化失敗");
     }
-
+});
 
 
 
@@ -249,7 +249,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             loadingMessage=null;
         }
     }
-});
 
   // 版本資訊
   const VERSION = "1.0.5";
