@@ -180,7 +180,7 @@ class ASRRecorder {
    * @returns {{ code: number, message: string, status: string, result: { startTime: number, endTime: number, segment: number, final: number, transcript: string }[]}}
    */
  
-  console.log(data) //
+  console.log(data); //
   
   parse(data) {
     return JSON.parse(data);
