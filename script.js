@@ -422,7 +422,7 @@ function removeLoadong(){
     //const deviceIndex = devices.options.selectedIndex;
     //const deviceValue = devices.options[deviceIndex].value;
     const parserUrlValue = parserUrl.value;
-    const model = "basic-taigi.2025.02.06";
+    const model = "basic-model";
     const deviceValue = null;
 
     //websocketStatus.innerText = `${connStatusLabel} Connecting ...`;
