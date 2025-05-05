@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded',()=>{
             // --- 停止錄音 ---
             try {
                 console.log("嘗試停止錄音...");
-                await Recorder.websocket.send("EOS");
-                console.log("已發送 EOS 信號。");
-
+                //await Recorder.websocket.send("EOS");
+                //console.log("已發送 EOS 信號。");
+                await handleRender(data);
                 await handleStop();
                 isRecording = false;
                 recordButton.textContent = "🎤 開始錄音";
