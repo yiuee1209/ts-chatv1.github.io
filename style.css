@@ -66,7 +66,8 @@ main{
     flex-shrink: 0;
     background-image: url('robot.png'); 
     background-size: 120%;
-    background-position: top; 
+    background-position: center top;
+    transform: translateY(-10%); 
 }
 .bubble {
     border-radius: 15px;
