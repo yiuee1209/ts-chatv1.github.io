@@ -362,7 +362,7 @@ class ASRRecorder {
     await this.login();
     await this.getWebsocketAccessInfo();
 
-    //this.setupParserConfig(parserUrl);
+    this.setupParserConfig(parserUrl);
     await this.parser.connect();
 
     await this.connectWebsocket();
