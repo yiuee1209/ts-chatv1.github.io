@@ -253,7 +253,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   const devices = "default"
   const message2 = document.querySelector("#js-error-message");
   const content2 = document.querySelector("#js-content");
-  
+
+
+/**
+* 使用代理器處理狀態
+*/
+    const handler = {
+        set: function (obj, props, value) {
+        obj[props] = value;
+        },
+    };
+    const proxy = new Proxy({ status: false, isRecording: false }, handler);
+
   /**
    * 允許麥克風權限
    *
