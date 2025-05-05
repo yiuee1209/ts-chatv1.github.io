@@ -3,23 +3,16 @@ let isRecording = false;
 
 document.addEventListener('DOMContentLoaded',()=>{
     const recordButton = document.getElementById('record-button');
-    // 禁用按鈕直到STT準備好
+    // 禁用按鈕直到登入成功
     recordButton.disabled = true;
     recordButton.textContent = "初始化中...";
     
     async function setupSTT() {
         try {
-            console.log("開始 STT 初始化...");
+            console.log("語音功能開始初始化...");
             Recorder = new ASRRecorder("ASR0421_70789634","Api042170789634","https://asrapi01.bronci.com.tw",false)
-            // *** 假設的函數名稱和參數，你需要替換成實際的 ***
-            // 可能需要傳入帳號密碼等，或它們是從全域變數讀取
             await handleInit();
             console.log("初始化完成。");
-
-            //console.log("開始取得模型...");
-            // *** 假設的函數名稱，你需要替換成實際的 ***
-            //await handleGetModelList();
-            //console.log("模型取得完成。");
 
             isSttReady = true;
             recordButton.disabled = false;
@@ -189,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(res => res.json())
         .then(data => {
             removeLoading();
-            appendMessage('bot', data.response); // 修改這行以顯示回覆
+            appendMessage('bot', data.response);
         })
         .catch(error=>{
             removeLoading();
@@ -265,85 +258,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   /**
    * 抓取 DOM
    */
-    const username = "ASR0421_70789634";
-    const password = "Api042170789634";
-    const url = "https://asrapi01.bronci.com.tw";
-    const recordFileCheckbox = false;
-    const parserUrl = "";
-  //const username = document.querySelector("#username");
-  //const password = document.querySelector("#password");
-  //const devices = document.querySelector("#devices");
+  const username = "ASR0421_70789634";
+  const password = "Api042170789634";
+  const url = "https://asrapi01.bronci.com.tw";
+  const recordFileCheckbox = false;
+  const parserUrl = "";
   const devices = "default"
-  //const url = document.querySelector("#url");
-  //const parserUrl = document.querySelector("#parser");
-  //const initButton = document.querySelector("#js-init-button");
-  //const message = document.querySelector("#js-error-message");
-  const getModelListButton = document.querySelector(
-    "#js-get-model-list-button"
-  );
-  const startRecordBtn = document.querySelector("#js-start-record");
-  const stopRecordBtn = document.querySelector("#js-stop-record");
-  const websocketStatus = document.querySelector("#js-websocket-status");
-  const content = document.querySelector("#js-content");
-  //const modelSelect = document.querySelector("#js-model-select");
-  const clearContentButton = document.querySelector(
-    "#js-clear-content-button"
-  );
-  const autoScrollButton = document.querySelector("#js-auto-scroll");
-  const audioBits = document.getElementById("js-audio-bps");
-  const volumeCells = document.querySelectorAll(".volume-cell");
-  //const recordFileCheckbox = document.querySelector("#js-record-file");
-  const parserResult = document.querySelector("#js-parser-result");
-
-  /**
-   * 初始化 DOM 之顯示文字
-   */
-  //message.innerText = "Please click Initialize before start";
-  //message.classList.add("blue");
-  const connStatusLabel = "Connection status: ";
-  const audioBpsLabel = "Audio bitrate: ";
-  //websocketStatus.innerText = `${connStatusLabel} No connection`;
-  //audioBits.innerText = `${audioBpsLabel} 0 Kbps`;
-
-  /**
-   * 抓取 DOM 並設定事件監聽
-  
-  initButton.addEventListener("click", handleInit);
-  getModelListButton.addEventListener("click", handleGetModelList);
-  startRecordBtn.addEventListener("click", handleStart);
-  stopRecordBtn.addEventListener("click", handleStop);
-  autoScrollButton.addEventListener("click", handleAutoScroll);
-  clearContentButton.addEventListener("click", handleClear);
-  recordFileCheckbox.addEventListener("change", handleChangeRecordFile);
-  */
-  /**
-   * 使用代理器處理狀態
-  */
-  const handler = {
-    set: function (obj, props, value) {
-      obj[props] = value;
-
-      if (obj.status) {
-        //getModelListButton.removeAttribute("disabled");
-        //startRecordBtn.removeAttribute("disabled");
-        //stopRecordBtn.removeAttribute("disabled");
-      } else {
-        //getModelListButton.setAttribute("disabled", true);
-        //startRecordBtn.setAttribute("disabled", true);
-        //stopRecordBtn.setAttribute("disabled", true);
-        //modelSelect.innerText = "";
-      }
-
-      if (obj.status && obj.isRecording) {
-        //stopRecordBtn.removeAttribute("disabled");
-        //startRecordBtn.setAttribute("disabled", true);
-      } else if (obj.status && !obj.isRecording) {
-        //startRecordBtn.removeAttribute("disabled");
-        //stopRecordBtn.setAttribute("disabled", true);
-      }
-    },
-  };
-  const proxy = new Proxy({ status: false, isRecording: false }, handler);
+  const message2 = document.querySelector("#js-error-message");
+  const content2 = document.querySelector("#js-content");
   
   /**
    * 允許麥克風權限
@@ -362,43 +284,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   /**
-   * 創建可選擇 audio devices 列表
-   */
-  async function getAudioDevices() {
-    if (!tempStream) {
-      await getUserMediaPermission();
-    }
-
-    const audioDevices = await navigator.mediaDevices.enumerateDevices();
-      
-    audioDevices.forEach((device) => {
-      if (device.kind === "audioinput") {
-        const option = document.createElement("option");
-        option.value = device.deviceId;
-        option.text = device.label;
-        //devices.appendChild(option);
-      }
-    });
-
-    // 釋放掉 stream 因為只是一次性需獲取麥克風權限
-    tempStream.getTracks().forEach((track) => track.stop());
-  }
-  getAudioDevices();
-
-  /**
    * 初始化
    */
   async function handleInit() {
-    //event.preventDefault();
-
-    // 清除狀態 classes
-    //message.classList.remove("red", "green", "blue");
 
     if (!username.value && !password.value && !url.value) {
-      //message.innerText =
-      //  "Please input username, password, and server URL";
-      //message.classList.remove("green");
-      //message.classList.add("red");
+      console.log("帳號密碼API任一未輸入。")
       return;
     }
 
@@ -419,44 +310,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         url.value,
         recordFileCheckbox.checked
       );
-      //message.innerText = "Initialized";
-      //message.classList.add("green");
       console.log("Initialized");
-
       proxy.status = true;
     } catch (error) {
-      //message.innerText = error;
-      //message.classList.add("red");
-
+      console.log("初始化錯誤：",error)
       proxy.status = false;
     }
   }
 
-  /**
-   * 若需修改 ASR model，可抓取 ASR 所提供的 Model 訓練資料 (optional)
-  
-  async function handleGetModelList() {
-    if (!Recorder) return;
-    try {
-      const { data } = await Recorder.getModelList();
-    
-      if (data) {
-        //modelSelect.innerText = "";
-        data.forEach((item) => {
-          const option = document.createElement("option");
-          option.value = item.name;
-          //option.innerText = item.displayName;
-          if (item.isDefaultModel === 1) {
-            option.setAttribute("selected", true);
-          }
-          modelSelect.appendChild(option);
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
- */
   /**
    * 開始轉換聲音資料
    *
@@ -467,28 +328,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 第二個參數為 device 若無設定請輸入 null ，則使用預設聲音設備
     // 第三個參數為 parser 的網址，若無設定則不會觸發 parser
     // 第四個參數為 callback，回傳結果
-    //const options = modelSelect.options;
-    //const index = modelSelect.options.selectedIndex;
-    //const model = index !== -1 ? options[index].value : null;
-
-    //const deviceIndex = devices.options.selectedIndex;
-    //const deviceValue = devices.options[deviceIndex].value;
     const parserUrlValue = parserUrl.value;
     const model = "basic-model";
     const deviceValue = null;
 
-    //websocketStatus.innerText = `${connStatusLabel} Connecting ...`;
-
     try {
       await Recorder.start(model, deviceValue, parserUrlValue, (data) => {
-        /*if (data.type === "Parser") {
-          handleRenderParserResult(data);
-          return;
-        }
-        */
         handleRender(data);
       });
-      //await setScreenLock(); // 鎖定畫面
+      await setScreenLock(); // 鎖定畫面
       proxy.isRecording = true;
     } catch (error) {
       console.log(error);
@@ -502,8 +350,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   async function handleStop() {
     await Recorder.stop();
-    //await releaseScreenLock(); // 釋放畫面
-    handleVolumeCellColor(0);
+    await releaseScreenLock(); // 釋放畫面
     proxy.isRecording = false;
   }
 
@@ -515,69 +362,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   /**
-   * 渲染麥克風聲音強度
-   */
-  const volumeCellLength = volumeCells.length;
-  const maximumValue = 60;
-  const gap = maximumValue / volumeCellLength; // 60 / 24 = 2.5
-  function handleVolumeCellColor(volume) {
-    const dB = handleConvertDecibel(volume);
-    const allVolumeCells = [...volumeCells];
-    const numberOfCells = Math.round(dB / gap);
-
-    let cellsToColored;
-    if (numberOfCells >= volumeCellLength) {
-      cellsToColored = allVolumeCells.slice(volumeCellLength);
-    } else {
-      cellsToColored = allVolumeCells.slice(
-        0,
-        volumeCellLength - numberOfCells
-      );
-    }
-
-    for (const cell of allVolumeCells)
-      cell.style.backgroundColor = "#cccccc";
-
-    for (const cell of cellsToColored) {
-      const classes = cell.classList;
-
-      cell.style.backgroundColor = classes.contains("red")
-        ? "#f56c6c"
-        : classes.contains("orange")
-        ? "#e6a23c"
-        : "#67c23a";
-    }
-  }
-
-  /**
-   * 將聲音量化成分貝(dB)
-   *
-   * 注意：我們僅用分貝公式特性計算聲音強度與 16bits 邊界值(boundary)的關係，使用的是線性比例，並非實際的分貝
-   * formula ref: https://dspillustrations.com/pages/posts/misc/decibel-conversion-factor-10-or-factor-20.html
-   */
-  function handleConvertDecibel(volume) {
-    return -10 * Math.log10(volume);
-  }
-
-  /**
    * Demo 如何將翻譯好的資料渲染到畫面上
    */
   function handleRender(data) {
-    const { code, result, status, message, bits, volume } = data;
+    const { code, result, status, message2, bits, volume } = data;
 
     if (status) {
       if (status === "opened") {
-        //websocketStatus.innerText = `${connStatusLabel} Connected (${message})`;
+        console.log(status);
       } else if (status === "closed") {
-        //websocketStatus.innerText = `${connStatusLabel} Disconnected (${message})`;
-        //audioBits.innerText = `${audioBpsLabel} 0 Kbps`;
+        console.log(status);
         handleStop();
       } else if (status === "bits") {
-        //audioBits.innerText = `${audioBpsLabel} ${bits} Kbps`;
+        console.log(status);
       } else if (status === "volume") {
+        console.log(status);
         handleVolumeCellColor(volume);
       }
-
       return;
     }
 
@@ -595,8 +396,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // BRIDGE_STATUS_UNKNOWN = 599;
     const errorCode = [401, 408, 415, 486, 500, 502, 503, 599];
     if (errorCode.includes(code)) {
-      //websocketStatus.innerText = `${connStatusLabel} Connected (${message})`;
-      //audioBits.innerText = `${audioBpsLabel} 0 Kbps`;
       handleStop();
     }
 
@@ -616,65 +415,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         d.dataset.segment = segment;
         d.innerText = transcript;
     
-        content.appendChild(d);
-        console.log("2",content) //
+        content2.appendChild(d);
+        console.log("2",content2) //
       } else {
         dom.innerText = transcript;
         console.log("3",dom) //
       }
-
-      if (autoScroll) {
-        // ASR output 區塊
-        content.scrollTop = content.scrollHeight;
-        content.animate({ scrollTop: content.scrollHeight });
-
-        parserResult.scrollTop = parserResult.scrollHeight;
-        parserResult.animate({ scrollTop: parserResult.scrollHeight });
-      }
     }
   }
-
-  /**
-   * 渲染 parser 結果
-   */
-  function handleRenderParserResult(data) {
-    const dom = document.createElement("p");
-    dom.innerText = JSON.stringify(data);
-
-    parserResult.appendChild(dom);
-    console.log("4",parserResult)
-  }
-
-  /**
-   * 處理 auto scroll
-   */
-  /*
-  function handleAutoScroll() {
-    autoScroll = !autoScroll;
-
-    autoScrollButton.innerText = autoScroll
-      ? "Auto scroll OFF"
-      : "Auto scroll ON";
-  }
-*/
   /**
    * 清除 js-content 資料
    */
   function handleClear() {
-    content.innerHTML = "";
-    parserResult.innerHTML = "";
+    content2.innerHTML = "";
   }
 
   /**
    * 確認瀏覽器是否支援 screen wake lock
-   
+   */
   function isScreenLockSupported() {
     return "wakeLock" in navigator;
   }
-  */
   /**
    * 設定瀏覽器 screen lock
-
+  */
   let screenLock;
   async function setScreenLock() {
     if (isScreenLockSupported()) {
@@ -682,14 +446,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         screenLock = await navigator.wakeLock.request("screen");
         console.log(`screen lock ${screenLock}`);
       } catch (error) {
-        console.log(error.name, error.message);
+        console.log(error.name, error.message2);
       }
     }
   }
-  */
+
   /**
    * 釋放瀏覽器 screen lock
-
+*/
   async function releaseScreenLock() {
     if (typeof screenLock !== "undefined" && screenLock !== null) {
       await screenLock.release();
@@ -697,7 +461,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       screenLock = null;
     }
   }
-   */
   /**
    * 變更 isRecord 狀態
    */
