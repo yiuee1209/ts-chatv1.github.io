@@ -394,16 +394,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     // BRIDGE_STATUS_UNKNOWN = 599;
     const errorCode = [401, 408, 415, 486, 500, 502, 503, 599];
     if (errorCode.includes(code)) {
+      console.log(code)
       handleStop();
     }
 
     // 處理 204 處理完成情況
     if (code === 204) {
+      console.log(code)
       handleStop();
     }
 
     // 此狀態為 ASR 轉換完成，並可渲染至頁面上
     if (code === 200) {
+      console.log(code)
       const { segment, transcript, final } = result[0];
 
       const dom = document.querySelector(`[data-segment="${segment}"]`);
