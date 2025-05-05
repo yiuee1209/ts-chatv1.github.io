@@ -328,12 +328,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 第二個參數為 device 若無設定請輸入 null ，則使用預設聲音設備
     // 第三個參數為 parser 的網址，若無設定則不會觸發 parser
     // 第四個參數為 callback，回傳結果
-    const parserUrlValue = parserUrl.value;
+    const parserUrlValue = parserUrl;
     const model = "basic-model";
     const deviceValue = null;
 
     try {
       await Recorder.start(model, deviceValue, parserUrlValue, (data) => {
+        console.log(data);
         handleRender(data);
       });
       await setScreenLock(); // 鎖定畫面
