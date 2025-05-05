@@ -67,36 +67,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
     });
-    
-    const sttOutputElement = document.getElementById('js-content');
-    const chatInputElement = document.getElementById('textInput');
-    
-    if (sttOutputElement && chatInputElement) {
-        const observer = new MutationObserver((mutationsList, observer) => {
-            // 監聽到變化
-            for(const mutation of mutationsList) {
-                if (mutation.type === 'childList' || mutation.type === 'characterData') {
-                    const newText = sttOutputElement.textContent;
-                    if (newText && newText.trim() !== "") { // 確保有內容且非空
-                        console.log("MutationObserver 偵測到 STT 輸出:", newText);
-                        chatInputElement.value += newText + " "; // 附加到聊天輸入框
-                        chatInputElement.focus();
-                        // 清空來源，避免重複觸發或累積舊內容
-                        sttOutputElement.textContent = '';
-                    }
-                }
-            }
-        });
-
-        // 設定觀察目標和選項
-        const config = { childList: true, characterData: true, subtree: true };
-        observer.observe(sttOutputElement, config);
-        console.log("MutationObserver 已附加到 #js-content");
-
-    } else {
-        console.error("#js-content 或 #textInput 元素未找到，MutationObserver 無法設定。");
-    }
-
 });
 
 
@@ -250,8 +220,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const recordFileCheckbox = false;
   const parserUrl = "";
   const devices = "default"
-  const message2 = document.querySelector("#js-error-message");
-  const content2 = document.querySelector("#js-content");
 
 
 /**
@@ -407,27 +375,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (code === 200) {
       console.log(code)
       const { segment, transcript, final } = result[0];
+        
+      textInput.value = transcript;
+      console.log("錄音結果", textInput); 
 
-      const dom = document.querySelector(`[data-segment="${segment}"]`);
-      console.log("1",dom) //
-      if (!dom) {
-        const d = document.createElement("p");
-        d.dataset.segment = segment;
-        d.innerText = transcript;
-    
-        content2.appendChild(d);
-        console.log("2",content2) //
-      } else {
-        dom.innerText = transcript;
-        console.log("3",dom) //
-      }
+
     }
-  }
-  /**
-   * 清除 js-content 資料
-   */
-  function handleClear() {
-    content2.innerHTML = "";
   }
 
   /**
