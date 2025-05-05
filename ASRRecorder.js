@@ -125,8 +125,8 @@ class ASRRecorder {
   async connectWebsocket() {
     // 需要創建好給 rawDataHandler 做使用
     return new Promise((resolve, reject) => {
-      this.wsUrl += `?ticket=${this.ticket}&rate=${this.sampleRate}&modelName=${this.model}&type=${this.mode}`;
-
+      this.wsUrl += `?ticket=${this.ticket}&rate=${this.sampleRate}&modelName=${this.model}&type=${this.mode}&minSilenceDurMs=100`;
+      //this.wsUrl += `?ticket=${this.ticket}&rate=${this.sampleRate}&modelName=${this.model}&type=${this.mode}`;
       this.websocket = new WebSocket(this.wsUrl);
       this.websocket.binaryType = "arraybuffer";
 
