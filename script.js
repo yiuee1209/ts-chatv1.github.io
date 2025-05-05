@@ -287,7 +287,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function handleInit() {
 
     if (!username.value && !password.value && !url.value) {
-      console.log("帳號密碼API任一未輸入。")
+      console.log("username.value",username.value);
+      console.log("password.value",password.value);
+      console.log("url.value",url.value);
       return;
     }
 
@@ -374,7 +376,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(status);
       } else if (status === "volume") {
         console.log(status);
-        handleVolumeCellColor(volume);
       }
       return;
     }
