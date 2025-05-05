@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 第三個參數為 parser 的網址，若無設定則不會觸發 parser
     // 第四個參數為 callback，回傳結果
     const parserUrlValue = parserUrl;
-    const model = "basic-model";
+    const model = null;
     const deviceValue = null;
 
     try {
