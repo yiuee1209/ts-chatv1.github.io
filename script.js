@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded',()=>{
                 console.log("嘗試停止錄音...");
                 //await Recorder.websocket.send("EOS");
                 //console.log("已發送 EOS 信號。");
-                await handleRender(data);
                 await handleStop();
                 isRecording = false;
                 recordButton.textContent = "🎤 開始錄音";
@@ -334,7 +333,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       await Recorder.start(model, deviceValue, parserUrlValue, (data) => {
-        console.log(data);
         handleRender(data);
       });
       await setScreenLock(); // 鎖定畫面
