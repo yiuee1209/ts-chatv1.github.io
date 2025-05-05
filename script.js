@@ -286,10 +286,10 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   async function handleInit() {
 
-    if (!username.value && !password.value && !url.value) {
-      console.log("username.value",username.value);
-      console.log("password.value",password.value);
-      console.log("url.value",url.value);
+    if (!username && !password && !url) {
+      console.log("username",username);
+      console.log("password",password);
+      console.log("url",url);
       return;
     }
 
@@ -305,10 +305,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       handleDestroy();
 
       Recorder = new ASRRecorder(
-        username.value,
-        password.value,
-        url.value,
-        recordFileCheckbox.checked
+        username,
+        password,
+        url,
+        recordFileCheckbox
       );
       console.log("Initialized");
       proxy.status = true;
