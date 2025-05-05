@@ -101,7 +101,7 @@ async function initSession() {
     }
 }
 
-let sessionId_A;
+let sessionId_A = null;
 document.addEventListener('DOMContentLoaded', async () => {
     const sessionId = await initSession();
     if (sessionId) {
@@ -140,6 +140,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(data => {
             removeLoading();
             appendMessage('bot', data.response);
+            if(data.end ===1) {
+                const button = document.querySelector("button[onclick='sendMessage()']");
+                button.disabled = true;
+            }
         })
         .catch(error=>{
             removeLoading();
