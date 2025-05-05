@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 button.style.backgroundColor = "gray";
             }
             const textFromAnotherBot = data.response;
-            TSS_TW = new TSS();
-            TSS_TW.synthesizeSpeech(textFromAnotherBot);
+            TTS_TW = new TTS();
+            TTS_TW.synthesizeSpeech(textFromAnotherBot);
         })
         .catch(error=>{
             removeLoading();
