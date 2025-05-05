@@ -1,4 +1,4 @@
-Class TTS{
+class TTS {
         async function synthesizeSpeech(text) {
             const credentials = {
                 username: 'TTS0421_70789634',
