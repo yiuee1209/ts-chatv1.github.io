@@ -64,6 +64,8 @@ main{
     background-color: var(--primary-red);
     margin-right: 10px;
     flex-shrink: 0;
+    background-image: url('robot.png'); 
+    background-size: cover;
 }
 .bubble {
     border-radius: 15px;
