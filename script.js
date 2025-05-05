@@ -141,6 +141,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             if(data.ending ===1) {
                 const button = document.querySelector("button[onclick='sendMessage()']");
                 button.disabled = true;
+                button.innerHTML = "對話已結束";
+                button.style.backgroundColor = "gray";
             }
         })
         .catch(error=>{
