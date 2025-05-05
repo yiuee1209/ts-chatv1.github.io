@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     async function setupSTT() {
         try {
             console.log("語音功能開始初始化...");
-            Recorder = new ASRRecorder("ASR0421_70789634","Api042170789634","https://asrapi01.bronci.com.tw",false)
+            await navigator.mediaDevices.getUserMedia({audio:true});
+            //Recorder = new ASRRecorder("ASR0421_70789634","Api042170789634","https://asrapi01.bronci.com.tw",false)
             await handleInit();
             console.log("初始化完成。");
 
@@ -52,8 +53,8 @@ document.addEventListener('DOMContentLoaded',()=>{
             // --- 停止錄音 ---
             try {
                 console.log("嘗試停止錄音...");
-                //await Recorder.websocket.send("EOS");
-                //console.log("已發送 EOS 信號。");
+                await Recorder.websocket.send("EOS");
+                console.log("已發送 EOS 信號。");
                 await handleStop();
                 isRecording = false;
                 recordButton.textContent = "🎤 開始錄音";
@@ -375,9 +376,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (code === 200) {
       console.log(code)
       const { segment, transcript, final } = result[0];
-        
-      textInput.value = transcript;
-      console.log("錄音結果", textInput); 
+      const textInput = document.getElementById('textInput'); 
+      textInput.value = result[0].transcript;
+      console.log("錄音結果", result[0].transcript); 
 
 
     }
