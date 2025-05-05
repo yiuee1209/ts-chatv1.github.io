@@ -17,21 +17,20 @@ document.addEventListener('DOMContentLoaded',()=>{
             isSttReady = true;
             recordButton.disabled = false;
             recordButton.textContent = "🎤 開始錄音";
-            console.log("STT 已準備就緒！");
+            console.log("錄音已準備就緒！");
 
         } catch (error) {
-            console.error("STT 初始化或取得模型失敗:", error);
-            recordButton.textContent = "STT 錯誤";
-            // 可以顯示更友好的錯誤訊息給使用者
+            console.error("錄音初始化或取得模型失敗:", error);
+            recordButton.textContent = "錄音錯誤";
         }
     }
 
-    // 執行STT設置
+    // 執行錄音設置
     setupSTT();
 
     recordButton.addEventListener('click', async () => {
         if (!isSttReady) {
-            console.warn("STT 尚未準備好，無法錄音。");
+            console.warn("錄音連接尚未準備好，無法錄音。");
             return; // 如果STT未就緒，不執行任何操作
         }
     
@@ -39,16 +38,13 @@ document.addEventListener('DOMContentLoaded',()=>{
             // --- 開始錄音 ---
             try {
                 console.log("嘗試開始錄音...");
-                // *** 假設的函數名稱，你需要替換成實際的 ***
                 await handleStart();
                 isRecording = true;
                 recordButton.textContent = "⏹️ 停止錄音";
                 console.log("錄音已開始。");
-                // 可能需要一些視覺提示，例如按鈕變色
     
             } catch (error) {
                 console.error("開始錄音失敗:", error);
-                // 重置狀態或顯示錯誤
                 isRecording = false; // 確保狀態正確
                 recordButton.textContent = "🎤 開始錄音";
             }
@@ -56,8 +52,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             // --- 停止錄音 ---
             try {
                 console.log("嘗試停止錄音...");
-
-                
                 await Recorder.websocket.send("EOS");
                 console.log("已發送 EOS 信號。");
 
@@ -65,14 +59,10 @@ document.addEventListener('DOMContentLoaded',()=>{
                 isRecording = false;
                 recordButton.textContent = "🎤 開始錄音";
                 console.log("錄音已停止。");
-                // 等待結果回傳 (下一步處理)
-
-
+                
     
             } catch (error) {
                 console.error("停止錄音失敗:", error);
-                 // 可能需要重置狀態或顯示錯誤
-                 // 即使停止失敗，也可能需要將UI狀態改回非錄音狀態
                  isRecording = false;
                  recordButton.textContent = "🎤 開始錄音";
             }
@@ -103,9 +93,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         const config = { childList: true, characterData: true, subtree: true };
         observer.observe(sttOutputElement, config);
         console.log("MutationObserver 已附加到 #js-content");
-
-        // (可選) 在頁面卸載時停止觀察
-        // window.addEventListener('beforeunload', () => observer.disconnect());
 
     } else {
         console.error("#js-content 或 #textInput 元素未找到，MutationObserver 無法設定。");
@@ -340,7 +327,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       proxy.isRecording = true;
     } catch (error) {
       console.log(error);
-      //websocketStatus.innerText = `${connStatusLabel} ${error}`;
       handleStop();
     }
   }
