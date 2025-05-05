@@ -144,6 +144,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 button.innerHTML = "對話已結束";
                 button.style.backgroundColor = "gray";
             }
+            const textFromAnotherBot = data.response;
+            TSS_TW = new TSS();
+            TSS_TW.synthesizeSpeech(textFromAnotherBot);
         })
         .catch(error=>{
             removeLoading();
