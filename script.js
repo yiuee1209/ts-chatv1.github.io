@@ -118,18 +118,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         menu.style.display = menu.style.display === 'block' ? 'none':'block';
     }
 
-
+    let languageSelect_A = null;
     function toggleVoice() {
-        var voiceToggle = document.getElementById('voice-toggle').checked;
-        var languageSelect = document.getElementById('language-select').value;
-        const TTS_TW = new TTS();
-        if (voiceToggle) {
-            TTS_TW.setLanguage(languageSelect);
-            console.log(`語音已啟動，語言：${languageSelect}`);
-        } else {
-            TTS_TW.disable();
-            console.log("語音已停用");
-        }
+        const voiceToggle = document.getElementById('voice-toggle').checked;
+        const languageSelect = document.getElementById('language-select').value;
+        languageSelect_A = languageSelect;
     }
 
     const chat = document.getElementById('chat');
@@ -154,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             appendMessage('bot', data.response);
             const TTS_TW = new TTS();
             const textFromAnotherBot = data.response;
-            
+            await TTS_TW.setLanguage(languageSelect_A);
             if (document.getElementById('voice-toggle').checked) {
                 TTS_TW.synthesizeSpeech(textFromAnotherBot);
             }
