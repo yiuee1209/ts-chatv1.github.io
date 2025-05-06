@@ -85,6 +85,7 @@ class TTS {
 
         setLanguage(languageCode) {
             this.languageCode = languageCode;
+            console.log("TTS已成功設定語言：",this.languageCode)
         }
 
         disable() {
