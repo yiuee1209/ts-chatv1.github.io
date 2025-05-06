@@ -175,7 +175,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
  
         marked.setOptions({
-          renderer: customRenderer
+          renderer: customRenderer,
+          breaks: true // 使用單個換行符來分隔段落
         })
 
         
