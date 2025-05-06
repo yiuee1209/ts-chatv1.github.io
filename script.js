@@ -138,6 +138,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(data => {
             removeLoading();
             appendMessage('bot', data.response);
+            
+            const TTS_TW = new TTS();
+            const textFromAnotherBot = data.response;
+            TTS_TW.synthesizeSpeech(textFromAnotherBot);
+            
             if(data.ending ===1) {
                 const button = document.querySelector("button[onclick='sendMessage()']");
                 button.disabled = true;
