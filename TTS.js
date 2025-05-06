@@ -1,4 +1,5 @@
 class TTS {
+        let this.languageCode = ''
         async synthesizeSpeech(text) {
             const credentials = {
                 username: 'TTS0421_70789634',
