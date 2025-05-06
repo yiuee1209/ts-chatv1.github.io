@@ -13,7 +13,7 @@ class TTS {
                 audioConfig: { speakingRate: 1.1 },
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
-            console.log()
+            console.log(this.languageCode)
             const res = await fetch(`${serverUrl}/api/v1/tts/login`, {
                 method: 'POST',
                 headers: {
