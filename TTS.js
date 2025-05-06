@@ -31,7 +31,7 @@ class TTS {
             }
         }
         
-        function playAudio(audioData) {
+        playAudio(audioData) {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             audioContext.decodeAudioData(audioData, buffer => {
                 const source = audioContext.createBufferSource();
