@@ -51,11 +51,10 @@ class TTS {
         }
         
 
+
     async playAudio(audioData) {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const audioBuffer = await audioContext.decodeAudioData(audioData).catch(error => {
-            console.error('Error decoding audio data:', error);
-        });
+        const audioBuffer = this.convertS16LEToFloat32(audioData, audioContext);
 
         if (audioBuffer) {
             const source = audioContext.createBufferSource();
@@ -64,6 +63,21 @@ class TTS {
             source.start(0);
         }
     }
+
+    async convertS16LEToFloat32(audioData, audioContext) {
+        const int16Array = new Int16Array(audioData);
+        const float32Array = new Float32Array(int16Array.length);
+
+        for (let i = 0; i < int16Array.length; i++) {
+            float32Array[i] = int16Array[i] / 32768;
+        }
+
+        const audioBuffer = audioContext.createBuffer(1, float32Array.length, 16000);
+        audioBuffer.getChannelData(0).set(float32Array);
+
+        return audioBuffer;
+    }
+
 }
 
 
