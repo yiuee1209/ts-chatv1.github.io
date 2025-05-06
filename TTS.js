@@ -44,7 +44,7 @@ class TTS {
         
             if (response.ok) {
                 const audioData = await response.arrayBuffer();
-                console.log(audioData)
+                //console.log(audioData)
                 this.playAudio(audioData);
             } else {
                 console.error('Failed to synthesize speech. HTTP response code:', response.status);
@@ -58,7 +58,7 @@ class TTS {
     async playAudio(audioData) {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const float32Array = this.convertS16LEToFloat32(audioData);
-        console.log(float32Array)
+        //console.log(float32Array)
         if (float32Array.length > 0) {
             const audioBuffer = audioContext.createBuffer(1, float32Array.length, 16000);
             audioBuffer.getChannelData(0).set(float32Array);
