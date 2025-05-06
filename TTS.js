@@ -8,7 +8,7 @@ class TTS {
             const serverUrl = 'https://ttsapi03.bronci.com.tw/';
             const payload = {
                 input: { text: text },
-                voice: {model:"melotts", languageCode: this.languageCode || 'cmn-TW', name: 'cmn-TW-vs2-F01' },
+                voice: {model:"melotts", languageCode: this.languageCode, name: 'cmn-TW-vs2-F01' },
                 audioConfig: { speakingRate: 1.1 },
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
@@ -82,6 +82,14 @@ class TTS {
         return float32Array;
     }
 
+
+        setLanguage(languageCode) {
+            this.languageCode = languageCode;
+        }
+
+        disable() {
+            this.languageCode = null;
+        }
 
 
 
