@@ -33,7 +33,7 @@ class TTS {
              }
              this.token = json.token;
                 
-            const response = await fetch(`${serverUrl}/ api/v1/tts/synthesize`, {
+            const response = await fetch(`${serverUrl}/api/v1/tts/synthesize`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
