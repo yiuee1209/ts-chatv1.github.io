@@ -163,6 +163,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     function appendMessage(sender,text){
         const message=document.createElement('div');
+        
+        const customRenderer = new marked.Renderer();
+        customRenderer.link = function(href, title, text) {
+          let html = `<a href="${href}"`;
+          if (title) {
+            html += ` title "${title}"`;
+          }
+          html += ` target="_blank" rel="noopener noreferrer">${text}</a>`;
+          return html;
+        }
+ 
+        marked.setOptions({
+          renderer: customRenderer
+        })
+
+        
         message.className=`message ${sender}`;
         if (sender === 'bot'){
             const avatar = document.createElement('div');
