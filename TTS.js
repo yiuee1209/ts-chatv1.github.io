@@ -1,5 +1,5 @@
 class TTS {
-        async function synthesizeSpeech(text) {
+        async synthesizeSpeech(text) {
             const credentials = {
                 username: 'TTS0421_70789634',
                 password: 'Api042170789634',
@@ -44,4 +44,4 @@ class TTS {
         }
 }
 
-window.TTS = TTS;
+window.TTS = new TTS();
