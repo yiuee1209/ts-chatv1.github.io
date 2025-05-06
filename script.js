@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             appendMessage('bot', data.response);
             const TTS_TW = new TTS();
             const textFromAnotherBot = data.response;
-            await TTS_TW.setLanguage(languageSelect_A);
+            TTS_TW.setLanguage(languageSelect_A);
             if (document.getElementById('voice-toggle').checked) {
                 TTS_TW.synthesizeSpeech(textFromAnotherBot);
             }
