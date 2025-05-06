@@ -1,5 +1,5 @@
 class TTS {
-        let this.languageCode = "";
+        let languageCode_A = "";
         async synthesizeSpeech(text) {
             const credentials = {
                 username: 'TTS0421_70789634',
@@ -9,7 +9,7 @@ class TTS {
             const serverUrl = 'https://ttsapi03.bronci.com.tw/';
             const payload = {
                 input: { text: text },
-                voice: {model:"melotts", languageCode: this.languageCode, name: 'cmn-TW-vs2-F01' },
+                voice: {model:"melotts", languageCode: languageCode_A, name: 'cmn-TW-vs2-F01' },
                 audioConfig: { speakingRate: 1.1 },
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
@@ -85,12 +85,12 @@ class TTS {
 
 
        async setLanguage(languageCode) {
-            this.languageCode = languageCode;
+            languageCode_A = languageCode;
             console.log("TTS已成功設定語言：",this.languageCode)
         }
 
-       async disable() {
-            this.languageCode = null;
+       disable() {
+            languageCode_A = null;
         }
 
 
