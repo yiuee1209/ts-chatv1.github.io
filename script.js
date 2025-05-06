@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-const TTS_TW = new TTS();
 
     function toggleMenu(){
         const menu = document.getElementById('menu');
@@ -123,7 +122,7 @@ const TTS_TW = new TTS();
     function toggleVoice() {
         var voiceToggle = document.getElementById('voice-toggle').checked;
         var languageSelect = document.getElementById('language-select').value;
-        
+        const TTS_TW = new TTS();
         if (voiceToggle) {
             TTS_TW.setLanguage(languageSelect);
             console.log(`語音已啟動，語言：${languageSelect}`);
@@ -153,7 +152,7 @@ const TTS_TW = new TTS();
         .then(data => {
             removeLoading();
             appendMessage('bot', data.response);
-            
+            const TTS_TW = new TTS();
             const textFromAnotherBot = data.response;
             
             if (document.getElementById('voice-toggle').checked) {
