@@ -50,17 +50,21 @@ class TTS {
             }
         }
         
-        async playAudio(audioData) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            audioContext.decodeAudioData(audioData, buffer => {
-                const source = audioContext.createBufferSource();
-                source.buffer = buffer;
-                source.connect(audioContext.destination);
-                source.start(0);
-            }, error => {
-                console.error('Error decoding audio data:', error);
-            });
-        }
+
+    async playAudio(audioData) {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuffer = await audioContext.decodeAudioData(audioData).catch(error => {
+            console.error('Error decoding audio data:', error);
+        });
+
+        if (audioBuffer) {
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(audioContext.destination);
+            source.start(0);
+        }
+    }
 }
+
 
 window.TTS = new TTS();
