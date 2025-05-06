@@ -13,12 +13,31 @@ class TTS {
                 audioConfig: { speakingRate: 1.1 },
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
-        
-            const response = await fetch(serverUrl, {
+
+            const response = await fetch(`${serverUrl}/api/v1/tts/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                username: credentials.username,
+                password: credentials.password,
+                }),
+             }).catch((error) => {
+                throw new Error(`Unable to login: ${error}`);
+             });
+
+             const json = await res.json();
+             if (json.error) {
+               throw new Error(`Please check username and password`);
+             }
+             this.token = json.token;
+                
+            const response = await fetch(`${serverUrl}/ api/v1/tts/synthesize`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + btoa(credentials.username + ':' + credentials.password)
+                    Authorization: `Bearer ${this.token}`,
                 },
                 body: JSON.stringify(payload)
             });
