@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
+const TTS_TW = new TTS();
 
     function toggleMenu(){
         const menu = document.getElementById('menu');
@@ -153,7 +154,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             removeLoading();
             appendMessage('bot', data.response);
             
-            const TTS_TW = new TTS();
             const textFromAnotherBot = data.response;
             
             if (document.getElementById('voice-toggle').checked) {
