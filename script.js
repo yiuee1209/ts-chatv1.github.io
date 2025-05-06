@@ -195,7 +195,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else if (sender === 'user'){
             const bubble =document.createElement('div');
             bubble.className=' bubble';
-            bubble.textContent =  marked.parse(text);
+            bubble.innerHTML =  marked.parse(text);
+            //bubble.textContent = text;
             message.appendChild(bubble);
         }
     
