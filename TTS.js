@@ -14,7 +14,7 @@ class TTS {
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
 
-            const response = await fetch(`${serverUrl}/api/v1/tts/login`, {
+            const res = await fetch(`${serverUrl}/api/v1/tts/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
