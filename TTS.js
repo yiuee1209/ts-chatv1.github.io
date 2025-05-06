@@ -44,6 +44,7 @@ class TTS {
         
             if (response.ok) {
                 const audioData = await response.arrayBuffer();
+                console.log(audioData)
                 this.playAudio(audioData);
             } else {
                 console.error('Failed to synthesize speech. HTTP response code:', response.status);
