@@ -52,17 +52,22 @@ class TTS {
         
 
 
-   async playAudio(audioData) {
+
+    async playAudio(audioData) {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const float32Array = this.convertS16LEToFloat32(audioData);
 
-        const audioBuffer = audioContext.createBuffer(1, float32Array.length, 16000);
-        audioBuffer.getChannelData(0).set(float32Array);
+        if (float32Array.length > 0) {
+            const audioBuffer = audioContext.createBuffer(1, float32Array.length, 16000);
+            audioBuffer.getChannelData(0).set(float32Array);
 
-        const source = audioContext.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(audioContext.destination);
-        source.start(0);
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(audioContext.destination);
+            source.start(0);
+        } else {
+            console.error('Error: Audio data is empty or invalid.');
+        }
     }
 
     async convertS16LEToFloat32(audioData) {
@@ -75,6 +80,7 @@ class TTS {
 
         return float32Array;
     }
+
 
 
 }
