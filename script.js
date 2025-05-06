@@ -144,16 +144,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             TTS_TW.synthesizeSpeech(textFromAnotherBot);
             
             if(data.ending ===1) {
-                const button = document.querySelector("button[onclick='sendMessage()']");
-                button.disabled = true;
-                button.innerHTML = "對話已結束";
-                button.style.backgroundColor = "gray";
+                appendMessage('bot', "本次諮詢已結束，如要重新開始對話請按F5。");
+                
+                const inputArea = document.querySelector(".input-area");
+                inputArea.style.display = "none";
+
+                //const button = document.querySelector("button[onclick='sendMessage()']");
+                //button.disabled = true;
+                //button.innerHTML = "對話已結束";
+                //button.style.backgroundColor = "gray";
             }
         })
         .catch(error=>{
             removeLoading();
             console.error('Error',error);
-            appendMessage('bot','很抱歉，大宇宙意識斷線中。')
+            appendMessage('bot','很抱歉，大宇宙意識斷線中，請使用F5重新連接。')
         });
     }
     function appendMessage(sender,text){
