@@ -13,16 +13,21 @@
         <div class="settings" onclick="toggleMenu()">⚙️</div>
         <div id="menu" class="menu">
             <a href="https://www.taishinlife.com.tw/portal/contactus" target="_blank">聯絡我們</a>
+
+
+            <!-- 新增語音功能開關和語言選擇 -->
             <div class="voice-settings">
                 <label for="voice-toggle">啟動語音：</label>
                 <input type="checkbox" id="voice-toggle" onclick="toggleVoice()">
                 <label for="language-select">選擇語言：</label>
-                <select id="language-select">
+                <select id="language-select" onchange="updateSelection()">
                     <option value="cmn-TW">中文</option>
                     <option value="nan-TW">台語</option>
                     <option value="hak-xi-TW">客語-四縣</option>
                     <option value="hak-hoi-TW">客家-海陸</option>
                 </select>
+            </div>
+
             </div>
 
         </div>
