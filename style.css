@@ -168,6 +168,12 @@ main{
 .menu a:hover{
     background-color: #f0f0f0;
 }
+.voice-settings {
+    padding: 10px;
+}
+.voice-settings label {
+    margin-right: 5px;
+}
 
 @media (max-width:600px){
     body{
