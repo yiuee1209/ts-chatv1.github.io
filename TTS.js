@@ -54,6 +54,7 @@ class TTS {
 
 
 
+
     async playAudio(audioData) {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const float32Array = this.convertS16LEToFloat32(audioData);
@@ -71,7 +72,7 @@ class TTS {
         }
     }
 
-    async convertS16LEToFloat32(audioData) {
+    convertS16LEToFloat32(audioData) {
         const int16Array = new Int16Array(audioData);
         const float32Array = new Float32Array(int16Array.length);
 
@@ -81,6 +82,7 @@ class TTS {
 
         return float32Array;
     }
+
 
 
 
