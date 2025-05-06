@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(error=>{
             removeLoading();
             console.error('Error',error);
-            appendMessage('bot','很抱歉，大宇宙意識斷線中，請使用F5重新連接。')
+            appendMessage('bot','很抱歉，大宇宙意識斷線中，請重整頁面以重新連接。')
         });
     }
     function appendMessage(sender,text){
