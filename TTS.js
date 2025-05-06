@@ -5,11 +5,10 @@ class TTS {
                 password: 'Api042170789634',
                 rememberMe: 1
             };
-        
             const serverUrl = 'https://ttsapi03.bronci.com.tw/';
             const payload = {
                 input: { text: text },
-                voice: {model:"melotts", languageCode: 'cmn-TW', name: 'cmn-TW-vs2-F01' },
+                voice: {model:"melotts", languageCode: this.languageCode || 'cmn-TW', name: 'cmn-TW-vs2-F01' },
                 audioConfig: { speakingRate: 1.1 },
                 outputConfig:{streamMode:1,shortPauseDuration:150,longPauseDuration:300}
             };
