@@ -1,5 +1,4 @@
 class TTS {
-        let languageCode_A = "";
         async synthesizeSpeech(text) {
             const credentials = {
                 username: 'TTS0421_70789634',
@@ -83,13 +82,13 @@ class TTS {
         return float32Array;
     }
 
-
+       let languageCode_A = null;
        async setLanguage(languageCode) {
             languageCode_A = languageCode;
             console.log("TTS已成功設定語言：",this.languageCode)
         }
 
-       disable() {
+       async disable() {
             languageCode_A = null;
         }
 
