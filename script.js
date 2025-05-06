@@ -117,7 +117,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         const menu = document.getElementById('menu');
         menu.style.display = menu.style.display === 'block' ? 'none':'block';
     }
-    
+
+
+    function toggleVoice() {
+        var voiceToggle = document.getElementById('voice-toggle').checked;
+        var languageSelect = document.getElementById('language-select').value;
+        
+        if (voiceToggle) {
+            TTS_TW.setLanguage(languageSelect);
+            console.log(`語音已啟動，語言：${languageSelect}`);
+        } else {
+            TTS_TW.disable();
+            console.log("語音已停用");
+        }
+    }
+
     const chat = document.getElementById('chat');
     function sendMessage(){
         const input = document.getElementById('textInput');
@@ -141,8 +155,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             const TTS_TW = new TTS();
             const textFromAnotherBot = data.response;
-            TTS_TW.synthesizeSpeech(textFromAnotherBot);
             
+            if (document.getElementById('voice-toggle').checked) {
+                TTS_TW.synthesizeSpeech(textFromAnotherBot);
+            }
             if(data.ending ===1) {
                 appendMessage('bot', "本次諮詢已結束，如要重新開始對話重整頁面。");
                 
