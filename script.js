@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             TTS_TW.synthesizeSpeech(textFromAnotherBot);
             
             if(data.ending ===1) {
-                appendMessage('bot', "本次諮詢已結束，如要重新開始對話請按F5。");
+                appendMessage('bot', "本次諮詢已結束，如要重新開始對話重整頁面。");
                 
                 const inputArea = document.querySelector(".input-area");
                 inputArea.style.display = "none";
