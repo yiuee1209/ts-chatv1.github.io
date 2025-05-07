@@ -126,7 +126,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const languageContainer = document.getElementById('language-container');
         if (voiceToggle) {
             languageContainer.style.display = 'block';
-            languageSelect_A = 'cmn-TW';
+            const languageSelect = document.getElementById('language-select').value;
+            languageSelect_A = languageSelect;
         } else {
             languageContainer.style.display = 'none';
             languageSelect_A = null; // 重置語言選擇
