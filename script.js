@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const languageContainer = document.getElementById('language-container');
         if (voiceToggle) {
             languageContainer.style.display = 'block';
+            languageSelect_A = 'cmn-TW';
         } else {
             languageContainer.style.display = 'none';
             languageSelect_A = null; // 重置語言選擇
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function saveLanguage() {
         const languageSelect = document.getElementById('language-select').value;
         languageSelect_A = languageSelect;
+        console.log(languageSelect_A);
     }
 
 
@@ -216,8 +218,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else if (sender === 'user'){
             const bubble =document.createElement('div');
             bubble.className=' bubble';
-            bubble.innerHTML =  marked.parse(text);
-            //bubble.textContent = text;
+            //bubble.innerHTML =  marked.parse(text);
+            bubble.textContent = text;
             message.appendChild(bubble);
         }
     
@@ -411,7 +413,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // BRIDGE_STATUS_NO_RESOURCE = 486;
     // BRIDGE_STATUS_SERVER_ERROR = 500;
     // BRIDGE_STATUS_SERVER_UNREACHED = 502;
-    // BRIDGE_STATUS_SERVER_ABORT = 503;
+    // BRIDGE_STATUS_SERVERBORT = 503;
     // BRIDGE_STATUS_UNKNOWN = 599;
     const errorCode = [401, 408, 415, 486, 500, 502, 503, 599];
     if (errorCode.includes(code)) {
