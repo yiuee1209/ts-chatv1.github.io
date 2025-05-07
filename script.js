@@ -118,12 +118,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         menu.style.display = menu.style.display === 'block' ? 'none':'block';
     }
 
-    let languageSelect_A = null;
+
+    let languageSelect_A = null;
+
     function toggleVoice() {
         const voiceToggle = document.getElementById('voice-toggle').checked;
-        const languageSelect = document.getElementById('language-select').value;
-        languageSelect_A = languageSelect;
+        const languageContainer = document.getElementById('language-container');
+        if (voiceToggle) {
+            languageContainer.style.display = 'block';
+        } else {
+            languageContainer.style.display = 'none';
+            languageSelect_A = null; // 重置語言選擇
+        }
     }
+
+    function saveLanguage() {
+        const languageSelect = document.getElementById('language-select').value;
+        languageSelect_A = languageSelect;
+    }
+
 
     const chat = document.getElementById('chat');
     function sendMessage(){
