@@ -142,10 +142,9 @@ main{
 }
 
 .settings{
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    top: 20px;
     left: 10px;
-    transform: translateY(-50%);
     color: white;
     font-size: 24px;
     cursor: pointer;
