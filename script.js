@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     function saveLanguage() {
         const languageSelect = document.getElementById('language-select').value;
         languageSelect_A = languageSelect;
-        console.log(languageSelect_A);
     }
 
 
