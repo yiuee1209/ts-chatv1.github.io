@@ -183,7 +183,7 @@ main{
     margin-right: 5px;
     color: var(--text-color);
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .voice-settings select, .voice-settings input {
