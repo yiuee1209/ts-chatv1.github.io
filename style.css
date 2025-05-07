@@ -178,7 +178,6 @@ main{
     display: flex;
     flex-direction: column;
 }
-
 .voice-settings label {
     margin-right: 5px;
     color: var(--text-color);
@@ -194,14 +193,10 @@ main{
     font-size: 16px;
     margin-bottom: 10px;
 }
-
 .voice-settings input[type="checkbox"] {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-}
-#language-container {
-    margin-bottom: 20px; /* 添加額外的空白 */
 }
 
 
