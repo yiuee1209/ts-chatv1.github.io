@@ -257,12 +257,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-
-
-
+  
+  console.log(`Function:智能機器人 Author:Daniel Chien`);
+  console.log(`Function:語音輸入與輸出 Author:長問科技`);
+  console.log(`Function:前端介面與串接 Author:Angela Ko`);
   // 版本資訊
   const VERSION = "1.0.5";
-  console.log(`Demo index.html version: ${VERSION}`);
 
   let Recorder = null;
   let autoScroll = true;
